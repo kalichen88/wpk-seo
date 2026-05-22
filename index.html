@@ -34,13 +34,20 @@
 
         <div class="topbar-actions">
           <a class="btn btn-ghost" href="#download">微扑克游戏下载</a>
-          <button class="icon-btn" type="button" data-menu-trigger aria-label="打开菜单">
+          <button
+            class="icon-btn"
+            type="button"
+            data-menu-trigger
+            aria-label="打开菜单"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
             <span class="burger" aria-hidden="true"><span></span></span>
           </button>
         </div>
       </div>
 
-      <div class="mobile-menu" data-mobile-menu hidden>
+      <div class="mobile-menu" id="mobile-menu" data-mobile-menu hidden>
         <div class="container mobile-menu-inner">
           <a class="mobile-link" href="#download">微扑克游戏下载</a>
           <a class="mobile-link" href="#about">关于Wpoker</a>
@@ -99,7 +106,8 @@
                 src="/static/banner_1_mobile.png"
                 alt="WePoker 手机界面展示"
                 decoding="async"
-                loading="lazy"
+                loading="eager"
+                fetchpriority="high"
               />
             </div>
           </div>

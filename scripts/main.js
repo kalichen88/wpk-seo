@@ -65,17 +65,32 @@ const setupMobileMenu = () => {
   if (!trigger || !menu) return
 
   const close = () => {
+    if (menu.hidden) return
     menu.hidden = true
     trigger.setAttribute("aria-label", "打开菜单")
+    trigger.setAttribute("aria-expanded", "false")
+  }
+
+  const open = () => {
+    if (!menu.hidden) return
+    menu.hidden = false
+    trigger.setAttribute("aria-label", "关闭菜单")
+    trigger.setAttribute("aria-expanded", "true")
   }
 
   const toggle = () => {
-    menu.hidden = !menu.hidden
-    trigger.setAttribute("aria-label", menu.hidden ? "打开菜单" : "关闭菜单")
+    if (menu.hidden) open()
+    else close()
   }
 
   trigger.addEventListener("click", toggle)
   qsa("a", menu).forEach((a) => a.addEventListener("click", close))
+  window.addEventListener("click", (e) => {
+    if (menu.hidden) return
+    if (!(e.target instanceof Node)) return
+    if (trigger.contains(e.target) || menu.contains(e.target)) return
+    close()
+  })
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape") close()
   })
