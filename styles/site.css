@@ -372,10 +372,11 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 22px;
 }
 
 .hero-phone-frame {
-  width: min(360px, 86vw);
+  width: clamp(260px, 38vw, 420px);
   border-radius: 34px;
   padding: 14px;
   background: rgba(0, 0, 0, 0.18);
@@ -387,6 +388,8 @@ a {
   display: block;
   width: 100%;
   height: auto;
+  max-height: 620px;
+  object-fit: contain;
   border-radius: 24px;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.44);
 }
@@ -1046,24 +1049,25 @@ a {
 @media (min-width: 981px) {
   .hero {
     padding: 84px 0 64px;
-    min-height: 720px;
+    min-height: 860px;
     display: flex;
     align-items: center;
   }
 
   .hero-grid {
-    grid-template-columns: 1.12fr 0.88fr;
-    gap: 42px;
-    align-items: end;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    align-items: start;
   }
 
   .hero-phone-frame {
-    width: min(420px, 34vw);
-    padding: 18px;
+    width: clamp(320px, 26vw, 430px);
+    padding: 16px;
   }
 
   .hero-media {
     justify-content: flex-start;
+    margin-top: 34px;
   }
 }
 
