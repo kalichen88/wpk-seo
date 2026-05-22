@@ -10,6 +10,15 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
+/static/banner_1_bg.png
+  Cache-Control: public, max-age=3600
+
+/static/banner_1_mobile.png
+  Cache-Control: public, max-age=3600
+
+/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
 /styles/*
   Cache-Control: public, max-age=604800
 
