@@ -1314,7 +1314,7 @@ a {
     right: auto;
     top: 50%;
     bottom: auto;
-    width: min(560px, calc(100vw - 48px));
+    width: min(520px, calc(100vw - 48px));
     border-radius: 24px;
     padding: 18px 22px;
     max-height: calc(100vh - 96px);
@@ -1348,32 +1348,32 @@ a {
   }
 
   .contact-float-qr-card {
-    max-width: 360px;
+    max-width: 330px;
     margin-left: auto;
     margin-right: auto;
     padding: 14px;
   }
 
   .contact-float-actions {
-    max-width: 420px;
+    max-width: 330px;
     margin-left: auto;
     margin-right: auto;
   }
 
   .contact-float-row-k {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .contact-float-row-v {
-    font-size: 15px;
-  }
-
-  .contact-float-row-em {
     font-size: 16px;
   }
 
+  .contact-float-row-em {
+    font-size: 17px;
+  }
+
   .contact-float-toast {
-    max-width: 420px;
+    max-width: 330px;
     margin-left: auto;
     margin-right: auto;
   }
