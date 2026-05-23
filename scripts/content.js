@@ -30,8 +30,8 @@ export const faqs = [
 ]
 
 export const contactWidget = {
-  title: "联系我们",
-  subtitle: "扫码添加客服",
+  title: "联系客服",
+  subtitle: "",
   qrSrc: "/static/kf.webp",
   serviceId: "wpk4433",
   serviceIdLabel: "客服ID：",

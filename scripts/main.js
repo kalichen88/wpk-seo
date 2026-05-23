@@ -170,7 +170,11 @@ const setupContactFloat = () => {
   if (!btn || !panel || !img || !titles.length || !subtitles.length || !hint || !actions || !appLabel || !appName || !urlLabel || !urlValue || !idLabel || !idValue || !copyUrlBtn || !copyIdBtn || !toast) return
 
   titles.forEach((el) => (el.textContent = contactWidget.title))
-  subtitles.forEach((el) => (el.textContent = contactWidget.subtitle))
+  const subtitleText = String(contactWidget.subtitle ?? "").trim()
+  subtitles.forEach((el) => {
+    el.textContent = subtitleText
+    el.hidden = !subtitleText
+  })
   img.alt = `${contactWidget.title}二维码`
   img.src = contactWidget.qrSrc
   appLabel.textContent = contactWidget.recommendAppLabel ?? "客服软件推荐："
