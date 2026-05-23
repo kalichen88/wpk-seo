@@ -1029,12 +1029,47 @@ a {
     display: none;
   }
 
+  .hero::before {
+    background-image: url("/static/banner_1_bg_mobile.png");
+    background-position: center;
+  }
+
   .hero-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .hero-media {
+    margin-top: 0;
+    justify-content: flex-end;
+    align-self: stretch;
+  }
+
+  .hero-phone-frame {
+    width: clamp(170px, 36vw, 260px);
+  }
+
+  .hero-phone {
+    max-height: min(520px, calc(100vh - 260px));
   }
 
   .hero-notes {
     grid-template-columns: 1fr;
+  }
+
+  .cta {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .cta .btn {
+    width: 100%;
+    padding: 10px 10px;
+    font-size: 13px;
+    gap: 8px;
+    white-space: nowrap;
   }
 
   .section-grid {
@@ -1128,12 +1163,9 @@ a {
     display: none;
   }
 
-  .cta {
-    flex-direction: column;
-  }
-
   .cta .btn {
-    width: 100%;
+    padding: 10px 8px;
+    font-size: 12px;
   }
 
   .platform-grid {
@@ -1142,5 +1174,16 @@ a {
 
   .feature-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-media {
+    justify-content: center;
+    margin-top: 18px;
   }
 }

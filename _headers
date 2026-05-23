@@ -13,6 +13,9 @@
 /static/banner_1_bg.png
   Cache-Control: public, max-age=3600
 
+/static/banner_1_bg_mobile.png
+  Cache-Control: public, max-age=3600
+
 /static/banner_1_mobile.png
   Cache-Control: public, max-age=3600
 
