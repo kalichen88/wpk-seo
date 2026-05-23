@@ -42,6 +42,10 @@ body {
   overflow-x: hidden;
 }
 
+body.is-modal-open {
+  overflow: hidden;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -851,6 +855,22 @@ a {
   gap: 12px;
 }
 
+.contact-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  background: rgba(0, 0, 0, 0.42);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 160ms ease;
+}
+
+.contact-backdrop.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .contact-float-btn {
   display: inline-flex;
   align-items: center;
@@ -888,8 +908,8 @@ a {
 }
 
 .contact-float-panel {
-  width: min(320px, calc(100vw - 36px));
-  border-radius: 24px;
+  width: min(340px, calc(100vw - 36px));
+  border-radius: 22px;
   padding: 14px;
   background: rgba(8, 27, 22, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -945,27 +965,74 @@ a {
   font-size: 13px;
 }
 
-.contact-float-qr {
+.contact-float-qr-card {
   margin-top: 12px;
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 14px;
 }
 
-.contact-float-qr img {
+.contact-float-qr-card img {
   display: block;
   width: 100%;
+  aspect-ratio: 1 / 1;
   height: auto;
-  border-radius: 14px;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.3);
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: none;
 }
 
 .contact-float-hint {
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(0, 0, 0, 0.72);
   font-weight: 600;
   line-height: 1.6;
   font-size: 13px;
+}
+
+.contact-float-actions {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.contact-float-id {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+  min-width: 0;
+}
+
+.contact-float-id-k {
+  color: rgba(255, 255, 255, 0.66);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.contact-float-id-v {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 900;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+}
+
+.contact-float-copy {
+  padding: 10px 12px;
+  border-radius: 14px;
+}
+
+.contact-float-toast {
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.86);
+  font-weight: 700;
+  font-size: 12px;
+  text-align: center;
+  padding: 8px 10px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .contact-float-panel-foot {

@@ -238,6 +238,7 @@
       </div>
     </footer>
 
+    <div class="contact-backdrop" data-contact-backdrop hidden></div>
     <div class="contact-float" data-contact-float data-open="false">
       <button class="contact-float-btn" type="button" data-contact-float-btn aria-expanded="false">
         <span class="contact-float-icon" aria-hidden="true">💬</span>
@@ -249,11 +250,19 @@
           <button class="contact-float-close" type="button" data-contact-float-close aria-label="关闭">×</button>
         </div>
         <div class="contact-float-panel-sub" data-contact-float-subtitle></div>
-        <div class="contact-float-qr">
+        <div class="contact-float-qr-card">
           <img data-contact-float-qr hidden />
           <div class="contact-float-hint" data-contact-float-hint hidden></div>
         </div>
-        <div class="contact-float-panel-foot">请使用手机扫码添加</div>
+        <div class="contact-float-actions" data-contact-float-actions hidden>
+          <div class="contact-float-id">
+            <span class="contact-float-id-k" data-contact-float-id-label></span>
+            <span class="contact-float-id-v" data-contact-float-id></span>
+          </div>
+          <button class="btn btn-ghost contact-float-copy" type="button" data-contact-float-copy>复制</button>
+        </div>
+        <div class="contact-float-toast" data-contact-float-toast hidden></div>
+        <div class="contact-float-panel-foot">长按识别 / 保存二维码添加客服</div>
       </div>
     </div>
 

@@ -146,6 +146,7 @@ const setupActiveNav = () => {
 
 const setupContactFloat = () => {
   const root = qs("[data-contact-float]")
+  const backdrop = qs("[data-contact-backdrop]")
   if (!root) return
 
   const btn = qs("[data-contact-float-btn]", root)
@@ -155,22 +156,44 @@ const setupContactFloat = () => {
   const subtitles = qsa("[data-contact-float-subtitle]", root)
   const hint = qs("[data-contact-float-hint]", root)
   const close = qs("[data-contact-float-close]", root)
+  const actions = qs("[data-contact-float-actions]", root)
+  const idLabel = qs("[data-contact-float-id-label]", root)
+  const idValue = qs("[data-contact-float-id]", root)
+  const copyBtn = qs("[data-contact-float-copy]", root)
+  const toast = qs("[data-contact-float-toast]", root)
 
-  if (!btn || !panel || !img || !titles.length || !subtitles.length || !hint) return
+  if (!btn || !panel || !img || !titles.length || !subtitles.length || !hint || !actions || !idLabel || !idValue || !copyBtn || !toast) return
 
   titles.forEach((el) => (el.textContent = contactWidget.title))
   subtitles.forEach((el) => (el.textContent = contactWidget.subtitle))
   img.alt = `${contactWidget.title}二维码`
   img.src = contactWidget.qrSrc
+  idLabel.textContent = contactWidget.serviceIdLabel ?? "客服ID："
+  idValue.textContent = contactWidget.serviceId ?? ""
+  actions.hidden = !(contactWidget.serviceId && String(contactWidget.serviceId).trim())
 
   const open = () => {
     root.setAttribute("data-open", "true")
     btn.setAttribute("aria-expanded", "true")
+    document.body.classList.add("is-modal-open")
+    if (backdrop) {
+      backdrop.hidden = false
+      requestAnimationFrame(() => backdrop.classList.add("is-visible"))
+    }
   }
 
   const hide = () => {
     root.setAttribute("data-open", "false")
     btn.setAttribute("aria-expanded", "false")
+    document.body.classList.remove("is-modal-open")
+    toast.hidden = true
+    toast.textContent = ""
+    if (backdrop) {
+      backdrop.classList.remove("is-visible")
+      window.setTimeout(() => {
+        backdrop.hidden = true
+      }, 180)
+    }
   }
 
   btn.addEventListener("click", () => {
@@ -180,6 +203,33 @@ const setupContactFloat = () => {
   })
 
   close?.addEventListener("click", hide)
+
+  copyBtn.addEventListener("click", async () => {
+    const val = String(contactWidget.serviceId ?? "").trim()
+    if (!val) return
+
+    try {
+      await navigator.clipboard.writeText(val)
+      toast.textContent = "已复制"
+    } catch {
+      const ta = document.createElement("textarea")
+      ta.value = val
+      ta.setAttribute("readonly", "true")
+      ta.style.position = "fixed"
+      ta.style.left = "-9999px"
+      document.body.appendChild(ta)
+      ta.select()
+      const ok = document.execCommand("copy")
+      document.body.removeChild(ta)
+      toast.textContent = ok ? "已复制" : "复制失败"
+    }
+
+    toast.hidden = false
+    window.setTimeout(() => {
+      toast.hidden = true
+      toast.textContent = ""
+    }, 1400)
+  })
 
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape") hide()
