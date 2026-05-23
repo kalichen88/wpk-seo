@@ -1041,9 +1041,19 @@ a {
     display: none;
   }
 
+  .hero {
+    padding: 46px 0 26px;
+  }
+
   .hero::before {
     background: url("/static/banner_1_bg_mobile.png") center / cover no-repeat;
     opacity: 0.26;
+  }
+
+  .hero::after {
+    background: radial-gradient(900px 700px at 80% 10%, rgba(45, 212, 191, 0.12), transparent 60%),
+      radial-gradient(900px 700px at 15% 20%, rgba(242, 184, 0, 0.12), transparent 55%),
+      linear-gradient(90deg, rgba(7, 26, 21, 0.78), rgba(7, 26, 21, 0.54) 58%, rgba(7, 26, 21, 0.38));
   }
 
   .hero-grid {
@@ -1060,7 +1070,7 @@ a {
     margin-top: 0;
     justify-content: flex-end;
     align-items: flex-start;
-    align-self: flex-start;
+    align-self: center;
     grid-column: 2 / 3;
     grid-row: 2;
   }
@@ -1074,6 +1084,16 @@ a {
   .trust-row {
     grid-column: 1 / -1;
     grid-row: 1;
+    margin-bottom: 10px;
+  }
+
+  .trust-badge {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .trust-badge.subtle {
+    display: none;
   }
 
   .hero-slogan-row {
@@ -1081,28 +1101,33 @@ a {
     margin-top: 6px;
     grid-column: 1 / 2;
     grid-row: 2;
+    align-self: center;
   }
 
   .hero-slogan {
-    width: min(260px, 58vw);
+    width: min(300px, 64vw);
   }
 
   .cta {
     grid-column: 1 / -1;
     grid-row: 3;
+    margin-top: 14px;
   }
 
   .hero-notes {
     grid-column: 1 / -1;
     grid-row: 4;
+    margin-top: 14px;
+    gap: 10px;
+    grid-template-columns: 1fr;
   }
 
   .hero-phone-frame {
-    width: clamp(190px, 40vw, 290px);
+    width: clamp(180px, 38vw, 270px);
   }
 
   .hero-phone {
-    max-height: min(560px, calc(100vh - 250px));
+    max-height: min(520px, calc(100vh - 280px));
   }
 
   .cta {
@@ -1113,10 +1138,24 @@ a {
 
   .cta .btn {
     width: 100%;
-    padding: 10px 10px;
+    min-height: 44px;
+    padding: 12px 10px;
     font-size: 13px;
     gap: 8px;
     white-space: nowrap;
+  }
+
+  .note {
+    padding: 12px 12px;
+    box-shadow: none;
+  }
+
+  .note-k {
+    font-size: 11px;
+  }
+
+  .note-v {
+    font-size: 13px;
   }
 
   .section-grid {
@@ -1199,7 +1238,7 @@ a {
 @media (max-width: 520px) {
   .contact-float {
     right: 14px;
-    bottom: 14px;
+    bottom: 84px;
   }
 
   .contact-float-btn {
@@ -1211,7 +1250,8 @@ a {
   }
 
   .cta .btn {
-    padding: 10px 8px;
+    min-height: 42px;
+    padding: 11px 8px;
     font-size: 12px;
   }
 
