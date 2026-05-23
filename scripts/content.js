@@ -35,4 +35,9 @@ export const contactWidget = {
   qrSrc: "/static/kf.webp",
   serviceId: "wpk4433",
   serviceIdLabel: "客服ID：",
+  recommendAppLabel: "客服软件推荐使用：",
+  recommendAppName: "三条APP",
+  appUrlLabel: "三条APP下载地址：",
+  appUrl: "13t.cn",
+  autoOpenOnMobile: true,
 }

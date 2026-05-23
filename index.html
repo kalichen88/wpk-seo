@@ -245,6 +245,7 @@
         <span class="contact-float-label" data-contact-float-title></span>
       </button>
       <div class="contact-float-panel" data-contact-float-panel role="dialog" aria-label="联系我们">
+        <div class="contact-float-handle" aria-hidden="true"></div>
         <div class="contact-float-panel-top">
           <div class="contact-float-panel-title" data-contact-float-title></div>
           <button class="contact-float-close" type="button" data-contact-float-close aria-label="关闭">×</button>
@@ -254,15 +255,31 @@
           <img data-contact-float-qr hidden />
           <div class="contact-float-hint" data-contact-float-hint hidden></div>
         </div>
-        <div class="contact-float-actions" data-contact-float-actions hidden>
-          <div class="contact-float-id">
-            <span class="contact-float-id-k" data-contact-float-id-label></span>
-            <span class="contact-float-id-v" data-contact-float-id></span>
+        <div class="contact-float-actions" data-contact-float-actions>
+          <div class="contact-float-row">
+            <div class="contact-float-row-copy">
+              <div class="contact-float-row-k" data-contact-float-app-label></div>
+              <div class="contact-float-row-v" data-contact-float-app-name></div>
+            </div>
           </div>
-          <button class="btn btn-ghost contact-float-copy" type="button" data-contact-float-copy>复制</button>
+          <div class="contact-float-row">
+            <div class="contact-float-row-copy">
+              <div class="contact-float-row-k" data-contact-float-url-label></div>
+              <div class="contact-float-row-v">
+                <span data-contact-float-url></span>
+              </div>
+            </div>
+            <button class="btn btn-ghost contact-float-copy" type="button" data-contact-float-copy-url>复制网址</button>
+          </div>
+          <div class="contact-float-row">
+            <div class="contact-float-row-copy">
+              <div class="contact-float-row-k" data-contact-float-id-label></div>
+              <div class="contact-float-row-v contact-float-row-em" data-contact-float-id></div>
+            </div>
+            <button class="btn btn-ghost contact-float-copy" type="button" data-contact-float-copy-id>复制ID</button>
+          </div>
         </div>
         <div class="contact-float-toast" data-contact-float-toast hidden></div>
-        <div class="contact-float-panel-foot">长按识别 / 保存二维码添加客服</div>
       </div>
     </div>
 

@@ -157,20 +157,32 @@ const setupContactFloat = () => {
   const hint = qs("[data-contact-float-hint]", root)
   const close = qs("[data-contact-float-close]", root)
   const actions = qs("[data-contact-float-actions]", root)
+  const appLabel = qs("[data-contact-float-app-label]", root)
+  const appName = qs("[data-contact-float-app-name]", root)
+  const urlLabel = qs("[data-contact-float-url-label]", root)
+  const urlValue = qs("[data-contact-float-url]", root)
   const idLabel = qs("[data-contact-float-id-label]", root)
   const idValue = qs("[data-contact-float-id]", root)
-  const copyBtn = qs("[data-contact-float-copy]", root)
+  const copyUrlBtn = qs("[data-contact-float-copy-url]", root)
+  const copyIdBtn = qs("[data-contact-float-copy-id]", root)
   const toast = qs("[data-contact-float-toast]", root)
 
-  if (!btn || !panel || !img || !titles.length || !subtitles.length || !hint || !actions || !idLabel || !idValue || !copyBtn || !toast) return
+  if (!btn || !panel || !img || !titles.length || !subtitles.length || !hint || !actions || !appLabel || !appName || !urlLabel || !urlValue || !idLabel || !idValue || !copyUrlBtn || !copyIdBtn || !toast) return
 
   titles.forEach((el) => (el.textContent = contactWidget.title))
   subtitles.forEach((el) => (el.textContent = contactWidget.subtitle))
   img.alt = `${contactWidget.title}二维码`
   img.src = contactWidget.qrSrc
+  appLabel.textContent = contactWidget.recommendAppLabel ?? "客服软件推荐："
+  appName.textContent = contactWidget.recommendAppName ?? ""
+  urlLabel.textContent = contactWidget.appUrlLabel ?? "下载地址："
+  urlValue.textContent = contactWidget.appUrl ?? ""
   idLabel.textContent = contactWidget.serviceIdLabel ?? "客服ID："
   idValue.textContent = contactWidget.serviceId ?? ""
-  actions.hidden = !(contactWidget.serviceId && String(contactWidget.serviceId).trim())
+  const canCopyUrl = Boolean(String(contactWidget.appUrl ?? "").trim())
+  const canCopyId = Boolean(String(contactWidget.serviceId ?? "").trim())
+  copyUrlBtn.disabled = !canCopyUrl
+  copyIdBtn.disabled = !canCopyId
 
   const open = () => {
     root.setAttribute("data-open", "true")
@@ -204,16 +216,16 @@ const setupContactFloat = () => {
 
   close?.addEventListener("click", hide)
 
-  copyBtn.addEventListener("click", async () => {
-    const val = String(contactWidget.serviceId ?? "").trim()
-    if (!val) return
+  const copyText = async (val, okText = "已复制") => {
+    const text = String(val ?? "").trim()
+    if (!text) return
 
     try {
-      await navigator.clipboard.writeText(val)
-      toast.textContent = "已复制"
+      await navigator.clipboard.writeText(text)
+      toast.textContent = okText
     } catch {
       const ta = document.createElement("textarea")
-      ta.value = val
+      ta.value = text
       ta.setAttribute("readonly", "true")
       ta.style.position = "fixed"
       ta.style.left = "-9999px"
@@ -221,7 +233,7 @@ const setupContactFloat = () => {
       ta.select()
       const ok = document.execCommand("copy")
       document.body.removeChild(ta)
-      toast.textContent = ok ? "已复制" : "复制失败"
+      toast.textContent = ok ? okText : "复制失败"
     }
 
     toast.hidden = false
@@ -229,7 +241,10 @@ const setupContactFloat = () => {
       toast.hidden = true
       toast.textContent = ""
     }, 1400)
-  })
+  }
+
+  copyUrlBtn.addEventListener("click", () => copyText(contactWidget.appUrl, "已复制网址"))
+  copyIdBtn.addEventListener("click", () => copyText(contactWidget.serviceId, "已复制客服ID"))
 
   window.addEventListener("keydown", (e) => {
     if (e.key === "Escape") hide()
@@ -250,6 +265,15 @@ const setupContactFloat = () => {
     hint.hidden = false
     hint.textContent = `未找到客服二维码：${contactWidget.qrSrc}。请将图片放到该路径后重新部署。`
   })
+
+  const isMobile = window.matchMedia?.("(max-width: 899px)")?.matches
+  if (isMobile && contactWidget.autoOpenOnMobile) {
+    const key = "wpk_contact_auto_opened"
+    if (!sessionStorage.getItem(key)) {
+      sessionStorage.setItem(key, "1")
+      window.setTimeout(() => open(), 900)
+    }
+  }
 }
 
 renderFeatures()

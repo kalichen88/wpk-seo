@@ -908,24 +908,43 @@ a {
 }
 
 .contact-float-panel {
-  width: min(340px, calc(100vw - 36px));
-  border-radius: 22px;
-  padding: 14px;
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  width: auto;
+  max-width: 520px;
+  margin: 0 auto;
+  border-radius: 22px 22px 18px 18px;
+  padding: 14px 14px calc(14px + env(safe-area-inset-bottom, 0px));
   background: rgba(8, 27, 22, 0.9);
   border: 1px solid rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(14px);
   box-shadow: var(--shadow);
-  transform-origin: 90% 100%;
-  transform: translateY(10px) scale(0.98);
+  transform-origin: 50% 100%;
+  transform: translateY(110%);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 160ms ease, transform 160ms ease;
+  transition: opacity 180ms ease, transform 220ms cubic-bezier(0.2, 0.9, 0.22, 1);
 }
 
 .contact-float[data-open="true"] .contact-float-panel {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
   pointer-events: auto;
+}
+
+.contact-float[data-open="true"] .contact-float-btn {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.contact-float-handle {
+  width: 44px;
+  height: 5px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.22);
+  margin: 2px auto 10px;
 }
 
 .contact-float-panel-top {
@@ -943,11 +962,11 @@ a {
 }
 
 .contact-float-close {
-  width: 38px;
-  height: 38px;
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.04);
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
   color: rgba(255, 255, 255, 0.9);
   cursor: pointer;
   font-size: 20px;
@@ -955,7 +974,7 @@ a {
 }
 
 .contact-float-close:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .contact-float-panel-sub {
@@ -992,10 +1011,41 @@ a {
 
 .contact-float-actions {
   margin-top: 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.contact-float-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 12px;
+}
+
+.contact-float-row-copy {
+  min-width: 0;
+}
+
+.contact-float-row-k {
+  color: rgba(255, 255, 255, 0.66);
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.contact-float-row-v {
+  margin-top: 4px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contact-float-row-em {
+  font-size: 14px;
+  font-weight: 900;
 }
 
 .contact-float-id {
@@ -1021,6 +1071,11 @@ a {
 .contact-float-copy {
   padding: 10px 12px;
   border-radius: 14px;
+}
+
+.contact-float-copy:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
 }
 
 .contact-float-toast {
