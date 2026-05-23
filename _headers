@@ -19,8 +19,17 @@
 /static/banner_1_mobile.png
   Cache-Control: public, max-age=3600
 
+/static/banner_1_new_slogan.png
+  Cache-Control: public, max-age=3600
+
 /static/*
   Cache-Control: public, max-age=31536000, immutable
+
+/styles/site.css
+  Cache-Control: public, max-age=3600
+
+/scripts/main.js
+  Cache-Control: public, max-age=3600
 
 /styles/*
   Cache-Control: public, max-age=604800

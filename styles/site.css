@@ -379,6 +379,18 @@ a {
   gap: 14px;
 }
 
+.hero-slogan-row {
+  display: none;
+  margin: 10px 0 0;
+}
+
+.hero-slogan {
+  display: block;
+  width: min(320px, 60vw);
+  max-width: 100%;
+  height: auto;
+}
+
 .hero-media {
   display: flex;
   justify-content: center;
@@ -1030,8 +1042,8 @@ a {
   }
 
   .hero::before {
-    background-image: url("/static/banner_1_bg_mobile.png");
-    background-position: center;
+    background: url("/static/banner_1_bg_mobile.png") center / cover no-repeat;
+    opacity: 0.26;
   }
 
   .hero-grid {
@@ -1043,15 +1055,31 @@ a {
   .hero-media {
     margin-top: 0;
     justify-content: flex-end;
-    align-self: stretch;
+    align-items: flex-start;
+    align-self: flex-start;
+  }
+
+  .hero-title,
+  .hero-subtitle,
+  .hero-tagline {
+    display: none;
+  }
+
+  .hero-slogan-row {
+    display: block;
+    margin-top: 6px;
+  }
+
+  .hero-slogan {
+    width: min(260px, 58vw);
   }
 
   .hero-phone-frame {
-    width: clamp(170px, 36vw, 260px);
+    width: clamp(190px, 40vw, 290px);
   }
 
   .hero-phone {
-    max-height: min(520px, calc(100vh - 260px));
+    max-height: min(560px, calc(100vh - 250px));
   }
 
   .hero-notes {
