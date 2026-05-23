@@ -1436,6 +1436,24 @@ a {
     max-height: 78vh;
     overflow: auto;
     padding: 16px 16px calc(16px + env(safe-area-inset-bottom, 0px));
+    bottom: 18px;
+  }
+
+  .contact-float-panel-top {
+    position: relative;
+    justify-content: center;
+    padding-right: 44px;
+  }
+
+  .contact-float-panel-title {
+    width: 100%;
+    text-align: center;
+  }
+
+  .contact-float-close {
+    position: absolute;
+    right: 0;
+    top: 0;
   }
 
   .contact-float-qr-card {
@@ -1445,11 +1463,24 @@ a {
     padding: 12px;
   }
 
+  .contact-float-qr-card + .contact-float-actions {
+    margin-top: 16px;
+  }
+
   .contact-float-actions {
     max-width: 300px;
     margin-left: auto;
     margin-right: auto;
     gap: 12px;
+  }
+
+  .contact-float-row:nth-child(2) {
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .contact-float-row:nth-child(3) {
+    margin-top: 4px;
   }
 
   .contact-float-row-k {
@@ -1462,6 +1493,13 @@ a {
 
   .contact-float-row-em {
     font-size: 16px;
+  }
+
+  .contact-float-copy {
+    min-height: 36px;
+    padding: 8px 10px;
+    border-radius: 12px;
+    font-size: 12px;
   }
 
   .contact-float-toast {
