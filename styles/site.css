@@ -337,6 +337,8 @@ a {
   font-size: clamp(42px, 6vw, 74px);
   line-height: 1.02;
   letter-spacing: -0.8px;
+  white-space: nowrap;
+  word-break: keep-all;
 }
 
 .hero-title-en {
