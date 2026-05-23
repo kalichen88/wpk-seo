@@ -32,5 +32,5 @@ export const faqs = [
 export const contactWidget = {
   title: "联系我们",
   subtitle: "扫码添加客服",
-  qrSrc: "/assets/qr/customer-service.webp",
+  qrSrc: "/static/kf.webp",
 }
