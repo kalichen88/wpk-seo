@@ -275,7 +275,7 @@ const setupContactFloat = () => {
     const key = "wpk_contact_auto_opened"
     if (!sessionStorage.getItem(key)) {
       sessionStorage.setItem(key, "1")
-      window.setTimeout(() => open(), 900)
+      window.setTimeout(() => open(), 1400)
     }
   }
 }
