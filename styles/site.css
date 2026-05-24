@@ -107,9 +107,9 @@ a {
   display: grid;
   place-items: center;
   border-radius: 11px;
-  background: linear-gradient(180deg, rgba(242, 184, 0, 0.9), rgba(242, 184, 0, 0.55));
-  color: #0b1915;
-  box-shadow: 0 10px 22px rgba(242, 184, 0, 0.25);
+  background: linear-gradient(180deg, rgba(45, 212, 191, 0.94), rgba(45, 212, 191, 0.62));
+  color: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 10px 22px rgba(45, 212, 191, 0.22);
 }
 
 .brand-text {
