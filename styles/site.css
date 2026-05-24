@@ -1432,11 +1432,18 @@ a {
 
 @media (max-width: 899px) {
   .contact-float-panel {
-    width: min(360px, calc(100vw - 24px));
-    max-height: 78vh;
+    left: 20vw;
+    right: 20vw;
+    width: auto;
+    max-height: 74vh;
     overflow: auto;
-    padding: 16px 16px calc(16px + env(safe-area-inset-bottom, 0px));
+    padding: 14px 14px calc(14px + env(safe-area-inset-bottom, 0px));
     bottom: 18px;
+    transform: translateY(110%);
+  }
+
+  .contact-float[data-open="true"] .contact-float-panel {
+    transform: translateY(0);
   }
 
   .contact-float-panel-top {
@@ -1457,10 +1464,10 @@ a {
   }
 
   .contact-float-qr-card {
-    max-width: 300px;
+    max-width: 255px;
     margin-left: auto;
     margin-right: auto;
-    padding: 12px;
+    padding: 10px;
   }
 
   .contact-float-qr-card + .contact-float-actions {
@@ -1468,14 +1475,14 @@ a {
   }
 
   .contact-float-actions {
-    max-width: 300px;
+    max-width: 255px;
     margin-left: auto;
     margin-right: auto;
-    gap: 12px;
+    gap: 10px;
   }
 
   .contact-float-row:nth-child(2) {
-    padding-bottom: 12px;
+    padding-bottom: 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
@@ -1484,26 +1491,27 @@ a {
   }
 
   .contact-float-row-k {
-    font-size: 13px;
-  }
-
-  .contact-float-row-v {
-    font-size: 15px;
-  }
-
-  .contact-float-row-em {
-    font-size: 16px;
-  }
-
-  .contact-float-copy {
-    min-height: 36px;
-    padding: 8px 10px;
-    border-radius: 12px;
     font-size: 12px;
   }
 
+  .contact-float-row-v {
+    font-size: 14px;
+  }
+
+  .contact-float-row-em {
+    font-size: 15px;
+  }
+
+  .contact-float-copy {
+    min-height: 34px;
+    padding: 8px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    min-width: 78px;
+  }
+
   .contact-float-toast {
-    max-width: 300px;
+    max-width: 255px;
     margin-left: auto;
     margin-right: auto;
   }
