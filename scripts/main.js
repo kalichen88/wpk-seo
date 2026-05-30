@@ -259,6 +259,8 @@ const setupContactFloat = () => {
 
   window.addEventListener("click", (e) => {
     if (!(e.target instanceof Node)) return
+    const support = qs("[data-topbar-support]")
+    if (support && support.contains(e.target)) return
     if (!root.contains(e.target)) hide()
   })
 
@@ -291,7 +293,9 @@ const setupTopbarSupport = () => {
   btn.addEventListener("click", (e) => {
     e.preventDefault()
     e.stopPropagation()
-    contact.dispatchEvent(new Event("contact:open"))
+    window.setTimeout(() => {
+      contact.dispatchEvent(new Event("contact:open"))
+    }, 0)
   })
 }
 
