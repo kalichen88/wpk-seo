@@ -151,6 +151,74 @@ a {
   align-items: center;
 }
 
+.topbar-support {
+  display: none;
+}
+
+.lang {
+  position: relative;
+}
+
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.lang-btn:hover {
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-1px);
+}
+
+.lang-btn-label {
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.lang-caret {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.lang-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  min-width: 140px;
+  padding: 8px;
+  border-radius: 16px;
+  background: rgba(8, 27, 22, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+}
+
+.lang-item {
+  width: 100%;
+  text-align: left;
+  padding: 10px 10px;
+  border-radius: 12px;
+  background: transparent;
+  border: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 700;
+  cursor: pointer;
+  font-family: var(--sans);
+}
+
+.lang-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -1163,6 +1231,24 @@ a {
     display: none;
   }
 
+  .topbar-download {
+    display: none;
+  }
+
+  .topbar-support {
+    display: inline-flex;
+  }
+
+  .lang-btn-label {
+    display: none;
+  }
+
+  .lang-btn {
+    width: 44px;
+    padding: 0;
+    justify-content: center;
+  }
+
   .hero {
     padding: 46px 0 26px;
   }
@@ -1383,6 +1469,10 @@ a {
   }
 
   .topbar-actions .icon-btn {
+    display: none;
+  }
+
+  .topbar-support {
     display: none;
   }
 

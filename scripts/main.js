@@ -212,6 +212,9 @@ const setupContactFloat = () => {
     }
   }
 
+  root.addEventListener("contact:open", open)
+  root.addEventListener("contact:close", hide)
+
   btn.addEventListener("click", () => {
     const isOpen = root.getAttribute("data-open") === "true"
     if (isOpen) hide()
@@ -280,9 +283,67 @@ const setupContactFloat = () => {
   }
 }
 
+const setupTopbarSupport = () => {
+  const btn = qs("[data-topbar-support]")
+  const contact = qs("[data-contact-float]")
+  if (!btn || !contact) return
+
+  btn.addEventListener("click", () => {
+    contact.dispatchEvent(new Event("contact:open"))
+  })
+}
+
+const setupLangMenu = () => {
+  const root = qs("[data-lang]")
+  if (!root) return
+
+  const btn = qs("[data-lang-btn]", root)
+  const menu = qs("[data-lang-menu]", root)
+  const label = qs("[data-lang-label]", root)
+  const items = qsa("[data-lang-item]", root)
+  if (!btn || !menu || !label || !items.length) return
+
+  const close = () => {
+    if (menu.hidden) return
+    menu.hidden = true
+    btn.setAttribute("aria-expanded", "false")
+  }
+
+  const open = () => {
+    if (!menu.hidden) return
+    menu.hidden = false
+    btn.setAttribute("aria-expanded", "true")
+  }
+
+  btn.addEventListener("click", () => {
+    if (menu.hidden) open()
+    else close()
+  })
+
+  items.forEach((it) => {
+    it.addEventListener("click", () => {
+      const val = it.getAttribute("data-lang-item") || it.textContent || ""
+      label.textContent = val
+      close()
+    })
+  })
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") close()
+  })
+
+  window.addEventListener("click", (e) => {
+    if (menu.hidden) return
+    if (!(e.target instanceof Node)) return
+    if (!root.contains(e.target)) close()
+  })
+}
+
 renderFeatures()
 renderFaq()
 setupMobileMenu()
 setupReveal()
 setupActiveNav()
 setupContactFloat()
+setupTopbarSupport()
+setupLangMenu()
