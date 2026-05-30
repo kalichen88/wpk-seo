@@ -288,7 +288,9 @@ const setupTopbarSupport = () => {
   const contact = qs("[data-contact-float]")
   if (!btn || !contact) return
 
-  btn.addEventListener("click", () => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault()
+    e.stopPropagation()
     contact.dispatchEvent(new Event("contact:open"))
   })
 }
