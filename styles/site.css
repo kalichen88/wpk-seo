@@ -15,8 +15,9 @@
   --radius: 18px;
   --radius-sm: 14px;
   --container: 1120px;
-  --serif: "Noto Serif SC", serif;
-  --sans: "Noto Sans SC", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --serif: "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Noto Sans CJK SC", "Source Han Sans SC", Arial, sans-serif;
 }
 
 * {
@@ -1466,7 +1467,26 @@ a {
   .hero-title,
   .hero-subtitle,
   .hero-tagline {
-    display: none;
+    display: block;
+    grid-column: 1 / -1;
+    text-align: left;
+  }
+
+  .hero-title {
+    margin-top: 12px;
+    font-size: clamp(30px, 8vw, 42px);
+    line-height: 1.12;
+  }
+
+  .hero-subtitle {
+    margin-top: 10px;
+    font-size: 17px;
+  }
+
+  .hero-tagline {
+    margin-top: 8px;
+    font-size: 13px;
+    line-height: 1.75;
   }
 
   .trust-row {
@@ -1498,13 +1518,13 @@ a {
 
   .cta {
     grid-column: 1 / -1;
-    grid-row: 3;
+    grid-row: 6;
     margin-top: 14px;
   }
 
   .hero-notes {
     grid-column: 1 / -1;
-    grid-row: 4;
+    grid-row: 7;
     margin-top: 14px;
     gap: 10px;
     grid-template-columns: 1fr;

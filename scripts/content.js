@@ -51,5 +51,5 @@ export const contactWidget = {
   recommendAppName: "三条APP",
   appUrlLabel: "三条APP下载地址：",
   appUrl: "13t.cn",
-  autoOpenOnMobile: true,
+  autoOpenOnMobile: false,
 }
