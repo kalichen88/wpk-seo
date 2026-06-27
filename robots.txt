@@ -2,4 +2,5 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://wpk-seo.pages.dev/sitemap.xml
+Sitemap: https://web.kc499.com/sitemap.xml
+Host: web.kc499.com
